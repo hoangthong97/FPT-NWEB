@@ -1,0 +1,26 @@
+﻿@model List<FA.JustBlog.Core.Post>
+@using FA.JustBlog.Extensions
+@{
+	ViewBag.Title = "GetAll";
+	Layout = "~/Views/Shared/Post/_ListPosts.cshtml";
+}
+
+<h1>All posts!</h1>
+
+<div class="container>
+		@foreach (var item in Model)
+		{
+			<div class="post-preview">
+
+				@*<h2 class="post-title text-primary"><a href="/post/details/@item.PostId"> @item.Title</a> </h2>*@
+				@Html.PostLink(item);
+				<br />
+				<small class="post-meta">
+					Posted @item.PostedOn.ToString() with rate to by @item.ViewCount view
+				</small>
+				<p><b>@item.ShortDescription</b></p>
+
+			</div>
+			<hr />
+		}
+</div>

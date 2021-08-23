@@ -1,0 +1,59 @@
+﻿@model IEnumerable<FA.JustBlog.Core.Post>
+
+@{
+	ViewBag.Title = "LatestPosts";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+	var index = 1;
+}
+
+<h2>LatestPosts</h2>
+
+
+<table class="table">
+	<tr>
+		<th>STT</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Category.Name)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Title)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.ShortDescription)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Published)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.PostedOn)
+		</th>
+
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>@index</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Category.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Title)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.ShortDescription)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Published)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.PostedOn)
+			</td>
+
+		</tr>
+		index++;
+	}
+
+	@Html.ActionLink("Back to List", "Index")
+</table>

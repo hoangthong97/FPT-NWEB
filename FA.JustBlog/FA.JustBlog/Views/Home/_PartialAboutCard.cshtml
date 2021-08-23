@@ -1,0 +1,17 @@
+﻿<div>
+	<img src="~/Content/assets/img/about-bg.jpg" class="img-fluid" />
+	<h3>About me!</h3>
+	<p>Just me, myseft and I, exploring the	universe of uknownment. I have a heart of love and a interest.	</p>
+</div>
+
+<h4>Top 5 posts have highest ViewCount</h4>
+
+@{
+	Html.RenderAction("MostViewedPosts", "Post");
+
+}
+
+<h4>Top 5 LatestPosts</h4>
+@{ 
+	Html.RenderAction("LatestPosts", "Post");
+}

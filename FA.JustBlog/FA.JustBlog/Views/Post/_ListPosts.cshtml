@@ -1,0 +1,21 @@
+﻿
+@model List<FA.JustBlog.Core.Post>
+@using FA.JustBlog.Extensions
+
+
+	@foreach (var item in Model)
+	{
+		<div class="post-preview">
+
+			@Html.PostLink(item)
+			<br />
+			<small class="post-meta">
+				Posted @Html.PostedOn(item.PostedOn) with rate to by @item.ViewCount view
+			</small>
+			@*<p><b>@item.ShortDescription</b></p>*@
+
+		</div>
+		<hr />
+
+	}
+

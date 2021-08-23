@@ -1,0 +1,16 @@
+﻿@model IEnumerable<FA.JustBlog.Core.Post>
+@using NonFactors.Mvc.Grid
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Home Post</h2>
+
+<p>
+	@Html.ActionLink("Create New", "AddPost")
+</p>
+
+@Html.AjaxGrid(Url.Action("IndexGrid"), new { id = "my-ajax-grid" })
+
+

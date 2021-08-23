@@ -1,0 +1,32 @@
+﻿
+@model IEnumerable<FA.JustBlog.Core.Post>
+@using NonFactors.Mvc.Grid
+
+@(Html
+	.Grid(Model)
+	.Build(columns =>
+	{
+		columns.Add(model => model.PostId).Titled("Id");
+		columns.Add(model => model.Title).Titled("Title");
+		columns.Add(model => model.PostedOn).Titled("PostedOn").Formatted("{0:d}");
+		columns.Add(model => model.Meta).Titled("Meta");
+		columns.Add(model => model.Published).Titled("Published");
+		columns.Add(model => model.ViewCount).Titled("ViewCount");
+		columns.Add(model => "<div class='d-flex'><a href='/admin/Post/Edit/" + model.PostId + "' class='btn'><i class='fa fa-pencil-square-o'></i></a>" +
+		 "<a href='/admin/Post/Details/" + model.PostId + "' class='btn'><i class='fa fa-asterisk'></i></a>" +
+		 "<a href='/admin/Post/Delete/" + model.PostId + "' class='btn'><i class='fa fa-trash-o'></i></a></div>").Encoded(false);
+	})
+	.Empty("No data found")
+	.Id("my-ajax-grid")
+	.Pageable(pager =>
+	{
+		pager.PageSizes = new Dictionary <Int32, String>
+	{ { 0, "All" }, { 5, "5" }, { 10, "10" } };
+		pager.ShowPageSizes = true;
+		pager.PagesToDisplay = 3;
+		pager.CurrentPage = 2;
+		pager.RowsPerPage = 10;
+	})
+	.Filterable()
+	.Sortable()
+	)

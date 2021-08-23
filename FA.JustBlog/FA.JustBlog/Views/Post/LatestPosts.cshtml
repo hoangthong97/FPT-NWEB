@@ -1,0 +1,32 @@
+﻿@using FA.JustBlog.Extensions
+@model IEnumerable<FA.JustBlog.Core.Post>
+
+@{
+	ViewBag.Title = "MostViewedPosts";
+	Layout = "~/Views/Shared/Post/_ListPosts.cshtml";
+}
+<h2>Top 5 Latest Posts</h2>
+<hr />
+<div class="container>
+	@foreach (var item in Model)
+	{
+		<div class="post-preview">
+
+			@*<h2 class="post-title text-primary"><a href="/post/details/@item.PostId"> @item.Title</a> </h2>*@
+			@Html.ActionLink(item.Title, "Details", "Post", new
+	   {
+		   year = item.PostedOn.Year,
+		   month = item.PostedOn.Month.ToString("00"),
+		   title = item.UrlSlug,
+
+	   }, new { @class = "h4 text-primary" })
+			<br />
+			<small class="post-meta">
+				Posted @Html.PostedOn(item.PostedOn) with rate to by @item.ViewCount view
+			</small>
+			<p><b>@item.ShortDescription</b></p>
+
+		</div>
+		<hr />
+	}
+</div>

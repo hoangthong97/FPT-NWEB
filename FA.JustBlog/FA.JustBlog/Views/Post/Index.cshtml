@@ -1,0 +1,40 @@
+﻿
+@model PagedList.IPagedList<FA.JustBlog.Core.Post>
+
+@using FA.JustBlog.Extensions
+@using PagedList.Mvc
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h1>All posts!</h1>
+
+<div class="container>
+	@foreach (var item in Model)
+	{
+		<div class="post-preview">
+
+			@Html.PostLink(item)
+			<br />
+			<small class="post-meta">
+				Posted @Html.PostedOn(item.PostedOn) with rate to by @item.ViewCount view
+			</small>
+			<p><b>@item.ShortDescription</b></p>
+
+		</div>
+		<hr />
+
+	}
+
+</div>
+
+<div id="container" style="margin-left: 20px">
+	<p></p>
+	<p></p>
+	<div class="pagination" style="margin-left: 400px">
+		Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+		of @Model.PageCount  @Html.PagedListPager(Model, page => Url.Action("Index", new { page  }))
+	</div>
+</div>

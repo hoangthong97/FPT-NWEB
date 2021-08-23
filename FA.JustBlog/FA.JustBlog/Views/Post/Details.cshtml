@@ -1,0 +1,23 @@
+﻿@model FA.JustBlog.Core.Post
+
+@{
+	ViewBag.Title = "Details";
+	Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Details Post</h2>
+
+<div>
+	<h3>@Html.DisplayFor(m => m.Title)</h3>
+	<small class="post-meta">
+		Posted @Html.DisplayFor(m=>m.PostedOn) with rate to by @Model.ViewCount view
+	</small>
+	<h5><b>@Html.DisplayFor(m=>m.ShortDescription)</b></h5>
+	<p>@Html.DisplayFor(m=>m.Description)</p>
+</div>
+<p>
+	@*@Html.ActionLink("Edit", "Edit", new { id = Model.PostId }) |*@
+	@Html.ActionLink("Back to List", "Index", new {@class="text-successs"})
+
+
+</p>
