@@ -15,6 +15,7 @@ namespace FA.JustBlog.Controllers
         // GET: Tag
         public ActionResult Index()
         {
+            var a = 1;
             return View();
         }
 
